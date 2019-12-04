@@ -25,7 +25,7 @@ def consolidate_cart(cart)
    hash = cart[index]
    if !hash[item]
      hash[item] = cart[index]
-     hash[item][:count] += 1 
+     hash[item][:count] = 1 
      items_array << item 
    else 
      hash[item][:count] += 1 
