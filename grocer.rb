@@ -16,7 +16,31 @@ def find_item_by_name_in_collection(name, collection)
 end
 
 def consolidate_cart(cart)
-
+ final_array = []
+ hash = {}
+ items_array = []
+ index = 0 
+ while index < cart.length do 
+   item = cart[index][:item]
+   hash = cart[index]
+   if hash[item]
+     hash[item][:count] += 1 
+   else 
+     hash[item] = cart[index]
+     hash[item][:count] = 1 
+     items_array << item 
+   end 
+   index += 1 
+ end
+ 
+ index = 0 
+ while index < items_array.length do 
+   
+   final_array << hash[items_array[index]]
+   index += 1 
+ end
+ final_array
+end
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
