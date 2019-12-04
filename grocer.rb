@@ -67,7 +67,19 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
- 
+ index = 0 
+  clearance_cart = cart
+  while index < cart.length do
+    if cart[index][:clearance] == true
+      clearance_cart[i][:price] = cart[i][:price] - cart[i][:price] * 0.2
+      clearance_cart[i][:price].round(2)
+
+    end
+
+     i += 1
+  end
+  clearance_cart
+end
 
 def checkout(cart, coupons)
   # Consult README for inputs and outputs
