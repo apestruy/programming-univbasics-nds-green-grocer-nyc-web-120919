@@ -43,27 +43,21 @@ con_cart = []
 end 
 
 def apply_coupons(cart, coupons)
-  cart_coupons = []
-  coupons_hash = {}
-  index = 0 
-  while index < coupons.length do
-    coupons_hash[coupons[index][:item]] = coupons[index]
-    index += 1 
-  end
-  index = 0 
-
-  while index < cart.length do
-    if !coupons_hash[cart[index][:item]]
-      cart_coupons << cart[index]
-    else
-      item = cart[index]
-      coupon = coupons_hash[item[:item]]
-      two_hashes = calculation(item, coupon)
-      cart_coupons += two_hashes
+  result = {}
+  cart.each do |food, info|
+    coupons.each do |coupon|
+      if food == coupon[:item] && info[:count] >= coupon[:num]
+        info[:count] =  info[:count] - coupon[:num]
+        if result["#{food} W/COUPON"]
+          result["#{food} W/COUPON"][:count] += 1
+        else
+          result["#{food} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => 1}
+        end
+      end
     end
-    index += 1 
+    result[food] = info
   end
-  cart_coupons
+  result
 end
 
 def apply_clearance(cart)
