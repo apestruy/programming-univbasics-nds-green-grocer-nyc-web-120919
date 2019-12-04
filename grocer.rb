@@ -35,8 +35,8 @@ def consolidate_cart(cart)
  
  index = 0 
  while index < items_array.length do 
-   
-   final_array << hash[items_array[index]]
+   final_array_item = hash[items_array[index]]
+   final_array << final_array_item
    index += 1 
  end
  final_array
