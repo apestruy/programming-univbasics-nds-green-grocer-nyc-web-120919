@@ -44,38 +44,25 @@ end
 
 
 def apply_coupons(cart, coupons)
-      i = 0 
-  j = 0 
+  index1 = 0 
+  index2 = 0 
   cart_with_coupons = cart
 
-  while i < cart.length do 
+  while index1 < cart.length do 
     j=0
       while j< coupons.length do
-        #verify if there is a coupon for that item
         if cart[i][:item] == coupons[j][:item]
-         #loop :  1) verify that the coupon can be used  
-         #        2) apply the coupon once
-         #        3) create/modify hash to add to array
-
-         #1
          while cart[i][:count] >= coupons[j][:num] do
-           #2 
            cart[i][:count] -= coupons[j][:num]
-
-           #3 
            cart_with_coupons.push({:item => ""+ cart[i][:item] + " W/COUPON",
             :price => coupons[j][:cost]/coupons[j][:num],
             :clearance => cart[i][:clearance],
             :count => coupons[j][:num]
            })
-
           end
-
         end
-
         j += 1 
       end
-
     i += 1 
   end
   cart_with_coupons
