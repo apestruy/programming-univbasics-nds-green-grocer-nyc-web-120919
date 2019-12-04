@@ -43,7 +43,27 @@ con_cart = []
 end 
 
 def apply_coupons(cart, coupons)
- 
+  cart_coupons = []
+  coupons_hash = {}
+  index = 0 
+  while index < coupons.length do
+    coupons_hash[coupons[index][:item]] = coupons[index]
+    index += 1 
+  end
+  index = 0 
+
+  while index < cart.length do
+    if !coupons_hash[cart[index][:item]]
+      cart_coupons << cart[index]
+    else
+      item = cart[index]
+      coupon = coupons_hash[item[:item]]
+      two_hashes = calculation(item, coupon)
+      cart_coupons += two_hashes
+    end
+    index += 1 
+  end
+  cart_coupons
 end
 
 def apply_clearance(cart)
