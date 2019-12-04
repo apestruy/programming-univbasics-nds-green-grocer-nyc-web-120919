@@ -18,9 +18,7 @@ end
 def consolidate_cart(cart)
 con_cart = []
   index = 0
-  # hash where :key is item's name and its value is old hash + :count
   temp_cart = {}
-  # list of names (:keys) in 'temp_cart' hash
   names_list = []
   while index < cart.length do 
     name = cart[index][:item]
