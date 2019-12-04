@@ -18,6 +18,7 @@ end
 def consolidate_cart(cart)
  final_array = []
  hash = {}
+ items_array = []
  index = 0 
  while index < cart.length do 
    item = cart[index][:item]
@@ -25,12 +26,19 @@ def consolidate_cart(cart)
    if !hash[item]
      hash[item] = cart[index]
      hash[item][:count] = 1 
+     items_array << item 
    else 
      hash[item][:count] += 1 
    end 
    index += 1 
  end
- array
+ 
+ index = 0 
+ while index < items_array.length do 
+   final_array << hash[items_array][index]
+   index += 1 
+ end
+ final_array
 end
 
 def apply_coupons(cart, coupons)
