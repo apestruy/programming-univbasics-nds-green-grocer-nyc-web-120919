@@ -48,16 +48,21 @@ def apply_coupons(cart, coupons)
     if item[:item] == coupon[:item]
        coupon_array << coupon
     end
-    
-    
-    
-    
-    
-    
+   new_array = []
+  for item in cart do
+    coupon = coupon_array
+    if coupon
+      discounted_price = coupon[:cost] / coupon[:num]
+      discounted_item = {:item => item[:item] + " W/COUPON", :price => discounted_price,
+        :clearance => item[:clearance], :count => coupon[:num]}
+      new_array.push(discounted_item)
+      no_sale_item = {:item => item[:item],:price => item[:price], :clearance => item[:clearance], :count => item[:count] - coupon[:num]}
+        new_array.push(no_sale_item)
+    else
+      new_array.push(item)
+    end
   end
-  
-  
-  
+  new_array 
 end
 
 def apply_clearance(cart)
