@@ -16,7 +16,7 @@ def find_item_by_name_in_collection(name, collection)
 end
 
 def consolidate_cart(cart)
- array = []
+ final_array = []
  hash = {}
  index = 0 
  while index < cart.length do 
