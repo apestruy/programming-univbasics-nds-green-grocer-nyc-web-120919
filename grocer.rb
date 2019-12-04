@@ -80,14 +80,4 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  consolidated_cart = consolidate_cart(cart)
-  consolidated_coupons_cart = apply_coupons(consolidated_cart, coupons)
-  consolidated_coupons_clearance_cart = apply_clearance(consolidated_coupons_cart)
   
-  total = 0 
-  index = 0 
-  while index < consolidated_coupons_clearance_cart.length do 
-    total += consolidated_coupons_clearance_cart[index][:price] * consolidated_coupons_clearance_cart[index][:count]
-    index += 1 
-  end
- end 
