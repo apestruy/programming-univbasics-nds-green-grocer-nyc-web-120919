@@ -44,7 +44,9 @@ end
 
 def apply_coupons(cart, coupons)
   coupon_array = []
-  
+  index = 0 
+  while index < cart.length do
+    if 
 end
 
 def apply_clearance(cart)
