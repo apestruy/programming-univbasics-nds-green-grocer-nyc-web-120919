@@ -32,6 +32,15 @@ con_cart = []
     end
     index += 1 
   end
+  
+  index = 0 
+  while index < names_list.length do
+    con_cart_item = temp_cart[names_list[index]]
+    con_cart << con_cart_item
+    index += 1 
+  end
+  con_cart
+end 
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
