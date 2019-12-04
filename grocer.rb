@@ -90,4 +90,10 @@ def checkout(cart, coupons)
     total += consolidated_coupons_clearance_cart[i][:price] * consolidated_coupons_clearance_cart[i][:count]
     index += 1 
   end
- 
+ if total >= 100 
+    total = total - total * 0.1
+    total.round(2)
+  end
+
+  total
+end
