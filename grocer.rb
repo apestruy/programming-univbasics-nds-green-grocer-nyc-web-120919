@@ -43,6 +43,7 @@ con_cart = []
 end 
 
 def apply_coupons(cart, coupons)
+  coupon_array = []
   
 end
 
