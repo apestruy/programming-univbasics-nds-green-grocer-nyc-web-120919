@@ -46,8 +46,14 @@ def apply_coupons(cart, coupons)
   coupon_array = []
   for coupon in coupons do
     if item[:item] == coupon[:item]
-       coupon_array << 
+       coupon_array << coupon
     end
+    
+    
+    
+    
+    
+    
   end
   
   
