@@ -86,7 +86,8 @@ def checkout(cart, coupons)
   
   total = 0 
   index = 0 
-  
+  while index < consolidated_coupons_clearance_cart.length do 
+    
  
  
 end
