@@ -16,17 +16,17 @@ def find_item_by_name_in_collection(name, collection)
 end
 
 def consolidate_cart(cart)
- output = {}
+ consolidated_cart = {}
   cart.each do |item|
     item_name = item.keys[0]
-    if output[item_name]
-      output[item_name][:count] += 1 
+    consolidated_cart[item_name] = item.values[0]
+    if consolidated_cart[item_name][:count] 
+      consolidated_cart[item_name][:count] += 1
     else
-      output[item_name] = item[item_name]
-      output[item_name][:count] = 1 
+      consolidated_cart[item_name][:count] = 1
     end
   end
-  output 
+  consolidated_cart
   end
 
 def apply_coupons(cart, coupons)
