@@ -44,26 +44,42 @@ end
 
 
 def apply_coupons(cart, coupons)
-     coupons.each do |coupon|
-    item_in_cart = find_item_by_name_in_collection(coupon[:item], cart)
-    if (item_in_cart != nil)
-      if (item_in_cart[:count] >= coupon[:num])
-        item_in_cart[:count] -= coupon[:num]
-        cart.push(
-          {
-            item: "#{coupon[:item]} W/COUPON",
-            price: (coupon[:cost] / coupon[:num]),
-            clearance: item_in_cart[:clearance],
-            count: coupon[:num]
-          }
-        )
+      i = 0 
+  j = 0 
+  cart_with_coupons = cart
 
-      elsif (item_in_cart[:count] == coupon[:num])
-          item_in_cart[:item] = "#{coupon[:item]} W/COUPON"
-          item_in_cart[:price] = (coupon[:cost] / coupon[:num])
+  while i < cart.length do 
+    j=0
+      while j< coupons.length do
+        #verify if there is a coupon for that item
+        if cart[i][:item] == coupons[j][:item]
+         #loop :  1) verify that the coupon can be used  
+         #        2) apply the coupon once
+         #        3) create/modify hash to add to array
+
+         #1
+         while cart[i][:count] >= coupons[j][:num] do
+           #2 
+           cart[i][:count] -= coupons[j][:num]
+
+           #3 
+           cart_with_coupons.push({:item => ""+ cart[i][:item] + " W/COUPON",
+            :price => coupons[j][:cost]/coupons[j][:num],
+            :clearance => cart[i][:clearance],
+            :count => coupons[j][:num]
+           })
+
+          end
+
+        end
+
+        j += 1 
       end
-    end
-  end 
+
+    i += 1 
+  end
+  cart_with_coupons
+end
 
  
  
